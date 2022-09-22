@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
-test('testando App.js', () => {
+describe('testando App.js', () => {
   it('Teste se o topo da aplicação contém conjunto fixo de links de navegação:', () => {
     renderWithRouter(<App />);
     expect(screen.getByRole('link', { name: /Home/i }));
@@ -15,7 +15,7 @@ test('testando App.js', () => {
 
   it('Teste se a aplicação é redirecionada para a página inicial', () => {
     const { history } = renderWithRouter(<App />);
-    const goHome = screen.getByRole('Link', { name: /home/i });
+    const goHome = screen.getByRole('link', { name: /home/i });
     userEvent.click(goHome);
     const { location: { pathname } } = history;
     expect(pathname).toBe('/');
